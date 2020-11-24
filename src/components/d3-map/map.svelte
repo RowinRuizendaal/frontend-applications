@@ -3,6 +3,13 @@
   import { onMount } from 'svelte'
   import { feature } from 'topojson'
   import Dots from '../d3-map/dots/map-dots.svelte'
+  import Filter from '../d3-map/filter/filter.svelte'
+
+  import {
+    handleMouseOver,
+    handleMouseOut,
+    mouseMove,
+  } from '../scripts/mouse-actions'
 
   let data = []
   const projection = geoMercator().scale(6000).center([5.116667, 52.17])
@@ -41,8 +48,12 @@
   {#each data as feature}
     <path
       d={path(feature)}
-      on:mouseover={() => console.log(feature.properties.statnaam)}
+      on:mouseover={handleMouseOver(feature.properties.statnaam)}
+      on:mouseout={handleMouseOut}
+      on:mousemove={mouseMove}
     />
   {/each}
   <Dots />
 </svg>
+
+<Filter />

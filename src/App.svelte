@@ -42,25 +42,27 @@
   }
 </style>
 
-<main>
-  <div class="header">
-    <h1>Waar kan je nog vandaag de dag nog contant betalen?</h1>
-  </div>
-  <section class="waar-kun-je-hoe-betalen">
-    <h2>Waar kun je hoe betalen?</h2>
-    <p>
-      Onderstaande Kaart laat zien waar je nog kan betalen met een specifieke
-      betaalmethode, u kunt op de kaart inzoomen door hier op te klikken.
-    </p>
-    <Info message={'Dit is een bericht met props in Svelte #dummytekst'} />
-    <Map />
-  </section>
-  <section class="vergelijk-prijzen">
-    <p>
-      Onderstaande Kaart laat zien waar je nog kan betalen met een specifieke
-      betaalmethode, u kunt op de kaart inzoomen door hier op te klikken.
-    </p>
-    <Info message={'Dit is een nieuwe melding, TODO adding better text'} />
-  </section>
-</main>
-<Footer />
+<body>
+  <main>
+    <div class="header">
+      <h1>Waar kan je nog vandaag de dag nog contant betalen?</h1>
+    </div>
+    <section class="waar-kun-je-hoe-betalen">
+      <h2>Waar kun je hoe betalen?</h2>
+      <p>
+        Onderstaande Kaart laat zien waar je nog kan betalen met een specifieke
+        betaalmethode, u kunt op de kaart inzoomen door hier op te klikken.
+      </p>
+      <Info message={'Dit is een bericht met props in Svelte #dummytekst'} />
+      <Map />
+    </section>
+    <section class="vergelijk-prijzen">
+      <p>
+        Onderstaande Kaart laat zien waar je nog kan betalen met een specifieke
+        betaalmethode, u kunt op de kaart inzoomen door hier op te klikken.
+      </p>
+      <Info message={'Dit is een nieuwe melding, TODO adding better text'} />
+    </section>
+  </main>
+  <Footer />
+</body>
