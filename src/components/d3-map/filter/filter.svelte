@@ -1,6 +1,8 @@
 <script>
-  import { onMount } from 'svelte'
+  import { onMount, createEventDispatcher } from 'svelte'
   import { ascending } from 'd3'
+
+  const dispatch = createEventDispatcher()
 
   let dots = []
   let arraywithvalues = []
@@ -24,6 +26,17 @@
     filterUnique = arraywithvalues.filter(unique)
     filterUnique.sort(ascending) // built in with D3
   })
+
+  function updatemap(method) {
+    const paymentmethods = dots.filter((row) => row.paymentmethod == method)
+    sayHello(paymentmethods)
+  }
+
+  function sayHello(data) {
+    dispatch('updateMap', {
+      text: data,
+    })
+  }
 </script>
 
 <div class="filter">
@@ -34,7 +47,7 @@
           type="radio"
           name="radio"
           id={payment}
-          on:change={() => console.log('heey')}
+          on:change={() => updatemap(payment)}
         />
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label> {payment} </label>

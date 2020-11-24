@@ -11,6 +11,11 @@
     mouseMove,
   } from '../scripts/mouse-actions'
 
+  function hanldeMessage(event) {
+    console.log(event.detail.text)
+    return event.detail.text
+  }
+
   let data = []
   const projection = geoMercator().scale(6000).center([5.116667, 52.17])
 
@@ -56,4 +61,4 @@
   <Dots />
 </svg>
 
-<Filter />
+<Filter on:updateMap={hanldeMessage} />

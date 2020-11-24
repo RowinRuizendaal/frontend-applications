@@ -9,6 +9,9 @@
   } from '../../scripts/mouse-actions'
 
   let dots = []
+  export let test
+
+  console.log(test)
 
   const projection = geoMercator().scale(6000).center([5.116667, 52.17])
   onMount(async () => {
