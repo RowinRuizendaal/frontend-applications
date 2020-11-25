@@ -1,80 +1,97 @@
 <script>
-  import { onMount, createEventDispatcher } from 'svelte'
+  import { createEventDispatcher } from 'svelte'
   import { ascending } from 'd3'
 
   
+  export let data
   const dispatch = createEventDispatcher()
 
-  let dots = []
-  let orignalData = []
+  let orignalData = data
   let arraywithvalues = []
   let filterUnique = []
+  
  
 
-  onMount(async () => {
-    const response = await fetch(
-      'https://gist.githubusercontent.com/RowinRuizendaal/4db72bcb197b05ac444d281da70110ae/raw/ccf99e232fcfe63fc2f2953459744b7dce608589/betaalmethode_new.json'
-    )
-    const json = await response.json()
-    dots = json
-    orignalData = json
-    dots.forEach((el) => {
-      arraywithvalues.push(el.paymentmethod)
-    })
-    const unique = (value, index, self) => {
-      return self.indexOf(value) === index
-    }
-    filterUnique = arraywithvalues.filter(unique)
-    filterUnique.sort(ascending) // built in with D3
+  data.forEach((el) => {
+    arraywithvalues.push(el.paymentmethod)
   })
-  function updatemap(method) {
-    const paymentmethods = dots.filter((row) => row.paymentmethod == method)
+
+  const unique = (value, index, self) => {
+    return self.indexOf(value) === index
+  }
+
+  filterUnique = arraywithvalues.filter(unique)
+  filterUnique.sort(ascending) // built in with D3
+
+
+  const updatemap = (method) => {
+    const paymentmethods = data.filter((row) => row.paymentmethod == method)
     newMapData(paymentmethods)
   }
-  function newMapData(data) {
+  const newMapData = (data)  =>{
     dispatch('updateMap', {
       array: data,
     })
-  }
+}
 </script>
 
 <style>
   input {
     display: none;
-    position: absolute;
-    width: 100%;
   }
 
   form {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    justify-items: center;
-    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
 }
 
 .radioBtn {
+  margin-top: 1.4rem;
+  margin-right: 1.4rem;
   margin-bottom: 1.4rem;
   overflow: hidden;
+  height: 5rem;
 }
 
 label {
-  position: relative;
-  width: 6rem;
-  padding: .5rem 1.9rem;
+  padding: 1.5rem;
   text-align: center;
   cursor: pointer;
   background: var(--blauw);
-  border-radius: 10px;
+  border-radius: 5px;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  display: block;
+  text-align: center;
 }
 
 label:hover {
   background: var(--roze);
 }
-</style>
 
+input:checked+label {
+    background: var(--roze);
+    color: var(--wit);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.4rem;
+}
+
+.reset {
+    background: var(--blauw);
+    border: 3px solid var(--blauw);
+    padding: .6rem 3rem;
+    color: #fff;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: .2s;
+}
+
+</style>
 
 <div class="filter">
   <form>
@@ -90,7 +107,9 @@ label:hover {
       </div>
     {/each}
   </form>
+  <div class="container">
   <button
   on:click={() => (newMapData(orignalData))} 
   class="reset">Reset het filter</button>
+</div>
 </div>

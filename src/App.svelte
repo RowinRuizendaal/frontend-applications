@@ -1,4 +1,5 @@
 <script>
+  import Header from './components/header/header.svelte'
   import Info from './components/infobar/info.svelte'
   import Map from './components/d3-map/map.svelte'
   import Footer from './components/footer/footer.svelte'
@@ -44,6 +45,7 @@
 </style>
 
 <body>
+  <Header />
   <main>
     <div class="header">
       <h1>Waar kan je nog vandaag de dag nog contant betalen?</h1>
@@ -58,11 +60,7 @@
       <Map />
     </section>
     <section class="vergelijk-prijzen">
-      <p>
-        Onderstaande Kaart laat zien waar je nog kan betalen met een specifieke
-        betaalmethode, u kunt op de kaart inzoomen door hier op te klikken.
-      </p>
-      <Info message={'Dit is een nieuwe melding, TODO adding better text'} />
+      <p></p>
     </section>
   </main>
   <Footer />

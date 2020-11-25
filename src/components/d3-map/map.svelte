@@ -14,32 +14,40 @@
   let plotData = []
   let mapData = []
 
-
+  const width = 960
+  const height = 500
+  
   const projection = geoMercator().scale(6000).center([5.116667, 52.17])
-  const currentProj = projection
-  const path = geoPath().projection(currentProj)
-
-
+  const path = geoPath().projection(projection)
 
   onMount(async function () {
     const map = await fetch('https://cartomap.github.io/nl/wgs84/gemeente_2020.topojson')
-    const dataset = await fetch('https://gist.githubusercontent.com/RowinRuizendaal/4db72bcb197b05ac444d281da70110ae/raw/ccf99e232fcfe63fc2f2953459744b7dce608589/betaalmethode_new.json')
     
-
     const json = await map.json()
-    const antwoord = await dataset.json()
-
     const topoData = feature(json, json.objects.gemeente_2020)
     const land = {
       ...topoData,
       features: topoData.features,
     }
     mapData = land.features
-    plotData = antwoord
   })
 
+  const fetchData = async () => {
+    if (localStorage.getItem('plotData')) {
+      plotData = JSON.parse(localStorage.getItem('plotData'))
+      return plotData
+    } else {
+      const dataset = await fetch('https://gist.githubusercontent.com/RowinRuizendaal/4db72bcb197b05ac444d281da70110ae/raw/ccf99e232fcfe63fc2f2953459744b7dce608589/betaalmethode_new.json')
+      const json = await dataset.json()
+      plotData = json
+      localStorage.setItem('plotData', JSON.stringify(plotData))
+      return plotData
+    }
+  }
+
+
   
-  function updateMap(event) {
+  const updateMap = (event)  =>{
     plotData = event.detail.array
   }
 
@@ -57,7 +65,7 @@
   }
 </style>
 
-<svg width="960" height="500">
+<svg width={width} height={height}>
   {#each mapData as feature}
     <path
       d={path(feature)}
@@ -70,5 +78,8 @@
 </svg>
 
 
-
-<Filter data={plotData} on:updateMap={updateMap} />
+{#await fetchData()}
+<p>Loading... filter data</p>
+{:then data}
+<Filter data={data} on:updateMap={updateMap} />
+{/await}

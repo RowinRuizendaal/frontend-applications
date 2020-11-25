@@ -20,7 +20,7 @@
 <footer>
   <div>
     <p>Rowin Danilo Ruizendaal</p>
-    <a href="https://github.com/RowinRuizendaal" target="_blank">
+    <a href="https://github.com/RowinRuizendaal/frontend-applications" target="_blank">
       <p>Bekijk mijn Repo op Github</p>
     </a>
   </div>
