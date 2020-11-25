@@ -10,6 +10,7 @@
     margin: 0 auto;
     padding: 3rem 0.8rem;
   }
+
   .header {
     max-width: 60rem;
     margin: 0 auto;

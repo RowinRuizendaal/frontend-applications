@@ -1,6 +1,5 @@
 <script>
   import { geoMercator } from 'd3'
-  import { onMount } from 'svelte'
 
   import {
     handleMouseOver,
@@ -8,19 +7,9 @@
     mouseMove,
   } from '../../scripts/mouse-actions'
 
-  let dots = []
-  export let test
-
-  console.log(test)
+  export let dots
 
   const projection = geoMercator().scale(6000).center([5.116667, 52.17])
-  onMount(async () => {
-    const response = await fetch(
-      'https://gist.githubusercontent.com/RowinRuizendaal/4db72bcb197b05ac444d281da70110ae/raw/dc3bce0996bc8f0ffb70d06999a8b0cfd1ea75a8/betaalmethode_new.json'
-    )
-    const json = await response.json()
-    dots = json
-  })
 </script>
 
 <style>

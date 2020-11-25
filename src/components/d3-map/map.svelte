@@ -11,30 +11,38 @@
     mouseMove,
   } from '../scripts/mouse-actions'
 
-  function hanldeMessage(event) {
-    console.log(event.detail.text)
-    return event.detail.text
-  }
+  let plotData = []
+  let mapData = []
 
-  let data = []
+
   const projection = geoMercator().scale(6000).center([5.116667, 52.17])
+  const currentProj = projection
+  const path = geoPath().projection(currentProj)
 
-  let currentProj = projection
-  let path = geoPath().projection(currentProj)
+
 
   onMount(async function () {
-    const response = await fetch(
-      'https://cartomap.github.io/nl/wgs84/gemeente_2020.topojson'
-    )
-    const json = await response.json()
+    const map = await fetch('https://cartomap.github.io/nl/wgs84/gemeente_2020.topojson')
+    const dataset = await fetch('https://gist.githubusercontent.com/RowinRuizendaal/4db72bcb197b05ac444d281da70110ae/raw/ccf99e232fcfe63fc2f2953459744b7dce608589/betaalmethode_new.json')
+    
+
+    const json = await map.json()
+    const antwoord = await dataset.json()
+
     const topoData = feature(json, json.objects.gemeente_2020)
     const land = {
       ...topoData,
       features: topoData.features,
     }
-
-    data = land.features
+    mapData = land.features
+    plotData = antwoord
   })
+
+  
+  function updateMap(event) {
+    plotData = event.detail.array
+  }
+
 </script>
 
 <style>
@@ -50,7 +58,7 @@
 </style>
 
 <svg width="960" height="500">
-  {#each data as feature}
+  {#each mapData as feature}
     <path
       d={path(feature)}
       on:mouseover={handleMouseOver(feature.properties.statnaam)}
@@ -58,7 +66,9 @@
       on:mousemove={mouseMove}
     />
   {/each}
-  <Dots />
+  <Dots dots={plotData} />
 </svg>
 
-<Filter on:updateMap={hanldeMessage} />
+
+
+<Filter data={plotData} on:updateMap={updateMap} />
