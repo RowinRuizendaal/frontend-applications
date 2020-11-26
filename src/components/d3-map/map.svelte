@@ -37,7 +37,7 @@
       plotData = JSON.parse(localStorage.getItem('plotData'))
       return plotData
     } else {
-      const dataset = await fetch('https://gist.githubusercontent.com/RowinRuizendaal/4db72bcb197b05ac444d281da70110ae/raw/ccf99e232fcfe63fc2f2953459744b7dce608589/betaalmethode_new.json')
+      const dataset = await fetch('https://gist.githubusercontent.com/RowinRuizendaal/4db72bcb197b05ac444d281da70110ae/raw/97849201d7c59a530fbac3d2465c4bc5140b358e/betaalmethode_new.json')
       const json = await dataset.json()
       plotData = json
       localStorage.setItem('plotData', JSON.stringify(plotData))
@@ -45,10 +45,9 @@
     }
   }
 
-
-  
-  const updateMap = (event)  =>{
+  const updateMap = (event)  => {
     plotData = event.detail.array
+    console.log(event.detail.length)
   }
 
 </script>

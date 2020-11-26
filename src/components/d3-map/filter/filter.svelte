@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte'
-  import { ascending } from 'd3'
+  import { ascending, selectAll } from 'd3'
 
   
   export let data
@@ -10,7 +10,6 @@
   let arraywithvalues = []
   let filterUnique = []
   
- 
 
   data.forEach((el) => {
     arraywithvalues.push(el.paymentmethod)
@@ -31,8 +30,14 @@
   const newMapData = (data)  =>{
     dispatch('updateMap', {
       array: data,
+      length: data.length
     })
 }
+const resetRadioButtons = () => {
+    const radioBtns = selectAll('input[type=radio]')
+    radioBtns
+      .property('checked', false)
+  }
 </script>
 
 <style>
@@ -109,7 +114,8 @@ input:checked+label {
   </form>
   <div class="container">
   <button
-  on:click={() => (newMapData(orignalData))} 
+  on:click={() => (newMapData(orignalData))}
+  on:click={() => (resetRadioButtons())}  
   class="reset">Reset het filter</button>
 </div>
 </div>

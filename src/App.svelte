@@ -67,7 +67,7 @@
       </p>
       <h2>Gedachtegang achter de visualisatie</h2>
       <p>
-        Daarom wil ik kijken of ik in 2020 meer of minder parkeergarages te vinden zijn waar je nog contant kan betalen 
+        Met deze visualisatie wil ik erachter komen of ik kan ondervinden of er meer of minder parkeergarages zijn waar je nog contant kan betalen. 
       </p>
       <Info message={'Onderstaand ziet u de kaart van Nederland, u kunt op de filter opties drukken om te kijken waar je met verschillende betaalmiddelen waar kan betalen'} />
       <Map />
