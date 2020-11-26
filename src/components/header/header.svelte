@@ -12,5 +12,5 @@
 
 
 <header>
-    <h1>Datavisualisatie</h1>
+    <h1>Betaalmogelijkheden parkeergarages</h1>
 </header>

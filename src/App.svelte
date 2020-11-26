@@ -42,21 +42,34 @@
     margin-top: 2em;
     font-weight: 300;
   }
+
+  a {
+    text-decoration: none;
+    color: var(--roze);
+  }
 </style>
 
 <body>
   <Header />
   <main>
     <div class="header">
-      <h1>Waar kan je nog vandaag de dag nog contant betalen?</h1>
+      <h1>Waar kunnen de ouderen vandaag de dag nog in een parkeergarage met contant geld betalen?</h1>
     </div>
     <section class="waar-kun-je-hoe-betalen">
-      <h2>Waar kun je hoe betalen?</h2>
+      <h2>Het probleem</h2>
       <p>
-        Onderstaande Kaart laat zien waar je nog kan betalen met een specifieke
-        betaalmethode, u kunt op de kaart inzoomen door hier op te klikken.
+        Op 15 Decemeber 2019, maakte <a href="https://nl.wikipedia.org/wiki/Arjen_Lubach" target=_blank>Arjen Lubach</a> een <a href="https://www.youtube.com/watch?v=PuHnSuoooV4&t=272s&ab_channel=vprozondagmetlubach" target=_blank>aflevering</a> genaamd: ouderen & geld.
+        Hierin wordt beweerd dat veel ouderen het liefst betalen met contant geld, verder beweerde Arjan Lubach dat slecht 10% van de ouderen niet kan internetbankieren. Terwijl dat er steeds meer pinautomaten verdwijnen in een rap tempo.  
       </p>
-      <Info message={'Dit is een bericht met props in Svelte #dummytekst'} />
+      <p>
+        Ook word er in de aflevering vermeld dat veel mensen nog steeds met contant geld willen betalen terwijl de techniek er zo op vooruit gaat dat het contant geld in een later stadium zou verdwijnen, en dat ouderen moeite hebben om mee te gaan met de voortangen
+        van de technologie.
+      </p>
+      <h2>Gedachtegang achter de visualisatie</h2>
+      <p>
+        Daarom wil ik kijken of ik in 2020 meer of minder parkeergarages te vinden zijn waar je nog contant kan betalen 
+      </p>
+      <Info message={'Onderstaand ziet u de kaart van Nederland, u kunt op de filter opties drukken om te kijken waar je met verschillende betaalmiddelen waar kan betalen'} />
       <Map />
     </section>
     <section class="vergelijk-prijzen">
