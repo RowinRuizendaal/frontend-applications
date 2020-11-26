@@ -65,11 +65,13 @@
         Ook word er in de aflevering vermeld dat veel mensen nog steeds met contant geld willen betalen terwijl de techniek er zo op vooruit gaat dat het contant geld in een later stadium zou verdwijnen, en dat ouderen moeite hebben om mee te gaan met de voortangen
         van de technologie.
       </p>
-      <h2>Gedachtegang achter de visualisatie</h2>
+      <h2>De visualisatie</h2>
       <p>
-        Met deze visualisatie wil ik erachter komen of ik kan ondervinden of er meer of minder parkeergarages zijn waar je nog contant kan betalen. 
+        Met deze visualisatie wil ik erachter komen of ik kan ondervinden of er meer of minder parkeergarages zijn waar je nog contant kan betalen. Deze data die ik heb opgehaald is afkomstig van het <a href="https://opendata.rdw.nl/browse?category=Parkeren" target=_blank>RDW</a>
+        U kunt meer informatie vinden op mijn <a href="https://github.com/RowinRuizendaal/frontend-applications" target=_blank>Github account</a>
       </p>
-      <Info message={'Onderstaand ziet u de kaart van Nederland, u kunt op de filter opties drukken om te kijken waar je met verschillende betaalmiddelen waar kan betalen'} />
+      <Info message={'Onderstaand ziet u de kaart van Nederland, u kunt op de een van de filter opties drukken om te kijken waar je met verschillende betaalmiddelen kan betalen.'} />
+      <Info message={'U kunt met de muis over de kaart heen hoveren, hierdoor krijgt u de specifieke plaats/parkeergarage te zien.'} />
       <Map />
     </section>
     <section class="vergelijk-prijzen">
