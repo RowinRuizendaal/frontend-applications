@@ -51,6 +51,10 @@ The primary key (PK) in these datasets is : areaid, with this key I am able to f
 - There are more parking spots where you can pay by card then with coins or banknotes
 - Parking spots closer to the city centre have more payment options and are more expensive than ones further away
 
+## What's done with invalid or empty values?
+
+During developing I needed to combine datasets with eachother, during the combining some values were lost and I've decided the keep it that way, beacuse there was no way I was able to use this data because it didn't contained the values that I needed.
+
 
 
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
